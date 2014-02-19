@@ -60,7 +60,6 @@ fstr_t;
 /* rmv: Use the macro below in preparation for the next Arduino release.
 # define FSTR(s) ((fstr_t*)PSTR(s))
 */
-# define F(s) ((fstr_t*)PSTR(s))
 
 class Print
 {

@@ -2,15 +2,15 @@ jnmicro.name=JeeNode Micro
 jnmicro.upload.tool=avrdude
 jnmicro.upload.protocol=arduino
 jnmicro.upload.maximum_size=8192
-jnmicro.upload.speed=9600
+jnmicro.upload.speed=19200 
 # Added erase.speed and erase.protocol parameters with help from
 # JohnO on the JeeLabs Forums. See thread at http://jeelabs.net/boards/7/topics/2986
 # Change erase.protocol to arduino
-jnmicro.erase.speed=9600
+jnmicro.erase.speed=19200
 jnmicro.erase.protocol=arduino
 
 # Next line jnmicro.bootloader.speed set by Bob Cochran
-jnmicro.bootloader.speed=9600
+jnmicro.bootloader.speed=19200
 # Next line sets the programmer for the bootloader -- added by Bob Cochran
 jnmicro.bootloader.protocol=arduino
 jnmicro.bootloader.tool=avrdude
