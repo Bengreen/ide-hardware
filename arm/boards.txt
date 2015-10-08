@@ -1,2 +1,4 @@
 tkpico.name=Tinker Pico
 tkpico.build.board=TINKER_PICO
+tkpico.build.core=lpc8xx
+tkpico.build.variant=tinker_pico
