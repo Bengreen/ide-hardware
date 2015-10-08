@@ -1,0 +1,2 @@
+tkpico.name=Tinker Pico
+tkpico.build.board=TINKER_PICO
