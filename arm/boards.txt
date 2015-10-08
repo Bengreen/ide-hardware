@@ -1,4 +1,8 @@
 tkpico.name=Tinker Pico
 tkpico.build.board=TINKER_PICO
+tkpico.build.variant=jeelabs_tkp
 tkpico.build.core=lpc8xx
-tkpico.build.variant=tinker_pico
+tkpico.build.mcu=cortex-m0plus
+tkpico.build.f_cpu=12000000L
+tkpico.build.extra_flags=-mthumb -march=armv6-m -D__LPC8__ 
+tkpico.build.ldscript=ld/flash.ld

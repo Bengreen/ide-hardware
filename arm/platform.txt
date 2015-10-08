@@ -1,21 +1,25 @@
 name=JeeLabs ARM Boards
 
-build.mcu=cortex-m0plus
-build.f_cpu=12000000L
-build.extra_flags=-mthumb  -march=armv6-m -D__STM32F1__ 
-
-compiler.warning_flags=-w -DDEBUG_LEVEL=DEBUG_NONE
-compiler.warning_flags.none=-w -DDEBUG_LEVEL=DEBUG_NONE
-compiler.warning_flags.default=-DDEBUG_LEVEL=DEBUG_NONE
-compiler.warning_flags.more=-Wall -DDEBUG_LEVEL=DEBUG_FAULT
-compiler.warning_flags.all=-Wall -Wextra -DDEBUG_LEVEL=DEBUG_ALL
-
 compiler.path={runtime.ide.path}/hardware/tools/gcc-arm-none-eabi-4.8.3-2014q1/bin/
+
+compiler.warning_flags.default=-DDEBUG_LEVEL=DEBUG_NONE
 
 compiler.cpp.cmd=arm-none-eabi-g++
 compiler.cpp.flags=-c -g -Os {compiler.warning_flags} -MMD -ffunction-sections -fdata-sections -nostdlib --param max-inline-insns-single=500 -fno-rtti -fno-exceptions -DBOARD_{build.variant}
 compiler.cpp.extra_flags=
 
+compiler.c.elf.cmd=arm-none-eabi-g++
+compiler.c.elf.flags=-Os -Wl,--gc-sections
+compiler.c.elf.extra_flags="-L{build.variant.path}/ld"
+
 compiler.libs.c.flags=
 
+compiler.ar.cmd=arm-none-eabi-ar
+compiler.ar.flags=rcs
+compiler.ar.extra_flags=
+
 recipe.cpp.o.pattern="{compiler.path}{compiler.cpp.cmd}" {compiler.cpp.flags} -mcpu={build.mcu} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} {compiler.cpp.extra_flags} {build.extra_flags} {compiler.libs.c.flags} {includes} "{source_file}" -o "{object_file}"
+
+recipe.c.combine.pattern="{compiler.path}{compiler.c.elf.cmd}" {compiler.c.elf.flags} -mcpu={build.mcu} "-T{build.variant.path}/{build.ldscript}" "-Wl,-Map,{build.path}/{build.project_name}.map" {compiler.c.elf.extra_flags} -o "{build.path}/{build.project_name}.elf" "-L{build.path}" -lm -lgcc -mthumb -Wl,--cref -Wl,--check-sections -Wl,--gc-sections -Wl,--unresolved-symbols=report-all -Wl,--warn-common -Wl,--warn-section-align -Wl,--warn-unresolved-symbols -Wl,--start-group {object_files} "{build.path}/{archive_file}" -Wl,--end-group
+
+recipe.ar.pattern="{compiler.path}{compiler.ar.cmd}" {compiler.ar.flags} {compiler.ar.extra_flags} "{build.path}/{archive_file}" "{object_file}"
