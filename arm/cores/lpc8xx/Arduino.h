@@ -1,11 +1,11 @@
 #ifndef Arduino_h
 #define Arduino_h
 
-#define INPUT 0
-#define OUTPUT 1
+const int INPUT = 0;
+const int OUTPUT = 1;
 
-#define LOW 0
-#define HIGH 1
+const int LOW = 0;
+const int HIGH = 1;
 
 extern "C" void setup ();
 extern "C" void loop ();
