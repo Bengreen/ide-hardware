@@ -9,3 +9,9 @@ tkpico.build.extra_flags=-mthumb -march=armv6-m -D__LPC8__
 tkpico.build.ldscript=ld/flash.ld
 
 tkpico.upload.tool=uploader
+tkpico.upload.file_type=bin
+tkpico.upload.maximum_size=32768
+tkpico.upload.flash.maximum_size=32768
+tkpico.upload.ram.maximum_size=8192
+tkpico.upload.protocol=lpc8_usart
+tkpico.upload.auto_reset=true
