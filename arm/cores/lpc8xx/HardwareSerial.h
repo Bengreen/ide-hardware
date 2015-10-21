@@ -1,7 +1,6 @@
 #include "Stream.h"
 
 class HardwareSerial : public Stream {
-
 public:
     void begin (int baud);
 
@@ -16,6 +15,8 @@ public:
     //inline size_t write (unsigned int n) { return write((uint8_t)n); }
     //inline size_t write (int n) { return write((uint8_t)n); }
     using Print::write;
+
+    operator bool () const { return true; }
 };
 
 extern HardwareSerial Serial;
