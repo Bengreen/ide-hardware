@@ -23,9 +23,11 @@ jnmicro.bootloader.lock_bits=0xFF
 # t84db entries posted to http://jeelabs.net/boards/7/topics/2986
 # Edit bootloader file below to a preferred bootloader if you do not
 # want the bootloader shown.
-jnmicro.bootloader.file={sketchbook.path}/hardware/jeelabs/avr/bootloaders/empty/empty84at8.hex
+# jnmicro.bootloader.file={sketchbook.path}/hardware/jeelabs/avr/bootloaders/empty/empty84at8.hex
+jnmicro.bootloader.file=empty/empty84at8.hex
 
 jnmicro.build.mcu=attiny84
 jnmicro.build.f_cpu=8000000L
 jnmicro.build.core=tiny
 jnmicro.build.variant=standard
+jnmicro.build.board=AVR_JNMICRO
